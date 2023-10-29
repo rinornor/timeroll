@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppearanceController;
+use App\Livewire\ShowAppearances;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,9 @@ Route::get('/', function () {
 });
 Route::resource('/appearance', AppearanceController::class);
 
+//Livewire
 
+Route::get('/livewire/appearances', ShowAppearances::class);
 
 // Jetstream
 Route::middleware([
