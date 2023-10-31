@@ -4,9 +4,9 @@
             {{ __('User Appearances') }}
         </h2>
     </x-slot>
-    <x-slot name="content">
+    
         <livewire:ShowAppearances />
-    </x-slot>
+    
             
 
 </x-app-layout>
