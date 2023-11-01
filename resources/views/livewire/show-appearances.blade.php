@@ -1,9 +1,9 @@
 
-
-<div class="h-screen flex items-center justify-center">
+<div class="bg-white overflow-hidden shadow-xl sm:rounded-lg py-5">
+<div class="w-screen md:w-1/2 flex items-center justify-center">
 <div>
-    <h2 class=" flex items-center justify-center">Appearances</h2>
-    <table class=" table-auto border-collapse border-2 border-gray-500">
+    <h2 class="flex items-center justify-center">Appearances</h2>
+    <table class="table-auto border-collapse border-2 border-gray-500">
         <thead>
             <tr>
                 <th class="border border-gray-400 px-4 py-2 text-gray-800">Date</th>
@@ -24,7 +24,7 @@
                     <button
                         type="button"
                         wire:click="delete({{$appearance->id}})"
-                        wire:conffirm="Are you sure you want to delete this?"
+                        wire:confirm="Are you sure you want to delete this?"
                     >
                     Delete
                 </button>
@@ -34,5 +34,6 @@
             @endforeach
         </tbody>
     </table>
+</div>
 </div>
 </div>
