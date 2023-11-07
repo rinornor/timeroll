@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/appearance', AppearanceController::class);
+Route::get('download-pdf', [AppearanceController::class, 'generatePDF'])->name('download-pdf');
 
 //Livewire
 

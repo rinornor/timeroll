@@ -6,12 +6,26 @@ use App\Models\Appearance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Event\Telemetry\Duration;
+use PDF;
 
 class AppearanceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function generatePDF(){
+        $appearances = Appearance::where('user_id', Auth::id())->get();
+        $data = [
+            'title' => 'Appearances',
+            'date' =>date('m/d/Y'),
+            'appearances' => $appearances
+        ];
+
+        $pdf = PDF::loadView('thePDF', $data);
+        return $pdf->download('appearances_log.pdf');
+    }
+
+
     public function index()
     {
         $appearances = Appearance::where('user_id', Auth::id())->get();

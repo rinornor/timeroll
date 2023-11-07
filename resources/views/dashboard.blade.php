@@ -10,6 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <a href="{{ route('appearance.create')}}">Add Appearance</a>
                 <a href="{{ route('appearance.index')}}">My Timeroll Appearances</a>
+                <p>This is an application to manage the time you spend in a specifik place or activity</p>
                 
             </div>
         </div>
