@@ -77,7 +77,8 @@ class AppearanceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Appearance::find($id);
+        return view('appearances.edit', compact('data'));
     }
 
     /**
@@ -85,7 +86,9 @@ class AppearanceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Appearance::find($id);
+        $data->update($request->all());
+        return redirect('appearance');
     }
 
     /**

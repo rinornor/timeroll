@@ -29,7 +29,20 @@
                     Delete
                 </button>
                 </td>
+                <a href="route('appearance.edit', $data->id)">
+                    <td class="border border-gray-400 px-4 py-2">
+                        <button
+                        type="button"
+                        
+                        
+                        >
+                        Edit
 
+                        </button>
+                        </a>
+                    </td>
+
+                
             </tr>
             @endforeach
         </tbody>
