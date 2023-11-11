@@ -17,10 +17,6 @@ class ShowAppearances extends Component
 
 
     
-
-    /**
-     * Update the specified resource in storage.
-     */
   
 
 

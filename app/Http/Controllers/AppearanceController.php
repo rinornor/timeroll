@@ -10,6 +10,11 @@ use PDF;
 
 class AppearanceController extends Controller
 {
+     function timetosec($time){
+        $parsed = date_parse($time);
+        $seconds = $parsed['hour'] * 3600 + $parsed['minute'] * 60 + $parsed['second'];
+        return $seconds;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -45,11 +50,7 @@ class AppearanceController extends Controller
      */
     public function store(Request $request)
     {
-           function timetosec($time){
-            $parsed = date_parse($time);
-            $seconds = $parsed['hour'] * 3600 + $parsed['minute'] * 60 + $parsed['second'];
-            return $seconds;
-        }
+           
 
         $request->validate([
             'time_in' => 'required|date',
@@ -57,8 +58,8 @@ class AppearanceController extends Controller
         ]);
 
 
-        $time_out_sec = timetosec($request->time_out);
-        $time_in_sec = timetosec($request->time_in);
+        $time_out_sec = $this->timetosec($request->time_out);
+        $time_in_sec = $this->timetosec($request->time_in);
         $duration = ($time_out_sec - $time_in_sec)/3600;
         $appearance = Appearance::create(['user_id' => Auth::id(),'date'=>$request->date, 'time_in' => $request->time_in, 'time_out'=> $request->time_out, 'duration'=>$duration]);
         return redirect()->route('appearance.index');
@@ -86,8 +87,20 @@ class AppearanceController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        
+        
+
+        $request->validate([
+            'time_in' => 'required|date',
+            'time_out' => 'required|date|after:time_in',
+        ]);
+
+        $time_out_sec = $this->timetosec($request->time_out);
+        $time_in_sec = $this->timetosec($request->time_in);
+        $duration = ($time_out_sec - $time_in_sec)/3600;
+
         $data = Appearance::find($id);
-        $data->update($request->all());
+        $data->update(array_merge([$request], ['duration'=>$duration] ));
         return redirect('appearance');
     }
 
