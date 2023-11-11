@@ -25,11 +25,21 @@
                         type="button"
                         wire:click="delete({{$appearance->id}})"
                         wire:confirm="Are you sure you want to delete this?"
+                        class="border px-4 py-2 bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white  border-red-500 hover:border-transparent rounded"
                     >
                     Delete
                 </button>
                 </td>
+               
+                    <td class="border border-gray-400 px-4 py-2">
+                    <a href="{{ route('appearances.edit', ['id' => $appearance->id]) }}">
+                    <button class="border px-4 py-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white  border-blue-500 hover:border-transparent rounded">
+                        Edit
+                    </button></a>
+                       
+                    </td>
 
+                
             </tr>
             @endforeach
         </tbody>
