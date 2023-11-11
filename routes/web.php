@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppearanceController;
 use App\Livewire\ShowAppearances;
+use App\Models\Appearance;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,8 @@ Route::get('/', function () {
 });
 Route::resource('/appearance', AppearanceController::class);
 Route::get('download-pdf', [AppearanceController::class, 'generatePDF'])->name('download-pdf');
+Route::get('appearance/{id}/edit', [AppearanceController::class, 'edit'])->name('appearances.edit');
+Route::post('appearance/{id}/update', [AppearanceController::class, 'update'])->name('appearances.update');
 
 //Livewire
 
