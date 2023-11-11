@@ -15,12 +15,6 @@ class ShowAppearances extends Component
     }
     
 
-
-    
-  
-
-
-
     
     public function render()
     {
